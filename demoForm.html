@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Demo Form</h1>
+    <table>
+        <form action=""onsubmit="checkValidation()">
+            <tr>
+                <td>Username:</td>
+                <td><input id="username"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" id="password"></td>
+            </tr>
+            <tr>
+                <td>Confirm password:</td>
+                <td><input type="password" id="CFpassword"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Register" disabled> <!--disable(thay nhung khong nhan vao duoc)-->
+                </td> 
+            </tr>
+        </form>
+    </table>
+    <script>
+        function checkValidation(){
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var CFpassword = document.getElementById("CFpassword").value;
+            if(password != CFpassword){
+                alert("Password must be same with CF");
+                return false; //form khong duoc submit
+            }else if(!password || !CFpassword || !username){
+                alert("password and confirm password and username can't blank");
+                return false;
+            }else if(password.length < 6 || password.length > 12){
+                alert("6 <= length of password <= 12");
+            }else if(password == username){
+                alert("password != username");
+                return false;
+            }else{
+                alert("Register successfully");
+                //dan tuong doi
+                window.open("demoConfirm.html");
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
